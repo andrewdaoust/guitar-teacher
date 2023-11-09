@@ -1,4 +1,5 @@
 import { Quiz } from "./components/Quiz.tsx";
+import { ScaleReference } from "./components/Scale.tsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         </a>
       </header> */}
       <Quiz />
+      <ScaleReference />
     </div>
   );
 }

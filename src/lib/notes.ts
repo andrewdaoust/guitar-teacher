@@ -1,4 +1,4 @@
-const NOTES = [
+export const NOTES = [
   "A",
   "A#",
   "B",

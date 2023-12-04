@@ -19,7 +19,7 @@ function App() {
         </a>
       </header> */}
       <Quiz />
-      <ScaleReference />
+      {/* <ScaleReference /> */}
     </div>
   );
 }

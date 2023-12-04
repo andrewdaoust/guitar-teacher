@@ -12,13 +12,13 @@ import {
   Avatar,
   Stack,
   Typography,
-  Box
+  Box,
 } from "@mui/material";
 // import FormControlLabel from "@mui/material/FormControlLabel";
 // import Checkbox from "@mui/material/Checkbox";
-// import Button from "@mui/material/Button"; 
+// import Button from "@mui/material/Button";
 // import ButtonGroup from "@mui/material/ButtonGroup";
-// import Avatar from "@mui/material/Avatar"; 
+// import Avatar from "@mui/material/Avatar";
 
 const MAX_COUNT = 20;
 const MAX_FRETS = 24;
@@ -58,7 +58,6 @@ export function Quiz() {
     <QuizOver score={progress.score} resetFn={resetGame} />
   ) : (
     <div>
-      {/* <QuizStart /> */}
       <Question
         progress={progress}
         question={question}
@@ -87,16 +86,6 @@ function Question({ progress, question, onCorrect, onWrong }) {
         <Avatar>{question.string}</Avatar>
         <Avatar>{question.fret}</Avatar>
       </Stack>
-      {/* <p>
-        String: <Avatar>{question.string}</Avatar>
-      </p> */}
-      {/* <p>Fret: {question.fret}</p> */}
-      {/* <button
-        className="note-button"
-        onClick={question.options[0] === question.note ? onCorrect : onWrong}
-      >
-        {question.options[0]}
-      </button> */}
       <ButtonGroup size="large">
         <QuizButton
           option={question.options[0]}
@@ -140,55 +129,6 @@ function QuizButton({ option, note, onCorrect, onWrong }) {
   );
 }
 
-function QuizStart() {
-  const [stringState, setStringState] = React.useState({
-    "1": true,
-    "2": true,
-    "3": true,
-    "4": true,
-    "5": true,
-    "6": true,
-  });
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStringState({
-      ...stringState,
-      [event.target.name]: event.target.checked,
-    });
-  };
-
-  return (
-    <div>
-      <FormGroup>
-        <FormControlLabel
-          control={<Checkbox defaultChecked onChange={handleChange} />}
-          label="6"
-        />
-        <FormControlLabel
-          control={<Checkbox defaultChecked onChange={handleChange} />}
-          label="5"
-        />
-        <FormControlLabel
-          control={<Checkbox defaultChecked onChange={handleChange} />}
-          label="4"
-        />
-        <FormControlLabel
-          control={<Checkbox defaultChecked onChange={handleChange} />}
-          label="3"
-        />
-        <FormControlLabel
-          control={<Checkbox defaultChecked onChange={handleChange} />}
-          label="2"
-        />
-        <FormControlLabel
-          control={<Checkbox defaultChecked onChange={handleChange} />}
-          label="1"
-        />
-      </FormGroup>
-    </div>
-  );
-}
-
 function QuizOver({ score, resetFn }) {
   return (
     <div>
@@ -218,6 +158,12 @@ function createAnswers(correctNote: string): string[] {
 }
 
 function createQuestionData() {
+  let root = notes.randomNote(null);
+  let major = Math.random() > 0.5 ? true : false;
+  let interval = Math.
+
+
+
   let string = notes.randomString();
   let fret = notes.randomFret(MAX_FRETS);
   let note = notes.note(string, fret);

@@ -5,6 +5,12 @@ export const STEPS = {
   Minor: [2, 1, 2, 2, 1, 2, 2],
 };
 
+export const INTERVALS = [
+  "UNISON",
+  "MINOR 2ND",
+  "MAJOR 2ND"
+];
+
 export function getScaleNotes(note: string, step: number[]) {
   let i = NOTES.indexOf(note);
   let notes = [note];
@@ -13,6 +19,10 @@ export function getScaleNotes(note: string, step: number[]) {
     notes.push(NOTES[i]);
   }
   return notes;
+}
+
+export function getRandomInterval() {
+  Math.floor(Math.random() * 7);
 }
 
 // console.log(getScaleNotes("C", STEPS.Major));

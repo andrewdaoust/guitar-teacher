@@ -1,4 +1,5 @@
-import { Quiz } from "./components/Quiz.tsx";
+import { FretboardQuiz } from "./components/fretboard.quiz.tsx";
+import { IntervalQuiz } from "./components/interval.quiz.tsx";
 import { ScaleReference } from "./components/Scale.tsx";
 
 function App() {
@@ -18,7 +19,11 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Quiz />
+      <FretboardQuiz />
+      <br />
+      <br />
+      <br />
+      <IntervalQuiz />
       {/* <ScaleReference /> */}
     </div>
   );

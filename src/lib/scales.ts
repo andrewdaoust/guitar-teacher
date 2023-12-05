@@ -1,4 +1,4 @@
-import { NOTES } from "./notes";
+import { NOTES } from "./notes.ts";
 
 export const STEPS = {
   Major: [2, 2, 1, 2, 2, 2, 1],
@@ -6,9 +6,19 @@ export const STEPS = {
 };
 
 export const INTERVALS = [
-  "UNISON",
-  "MINOR 2ND",
-  "MAJOR 2ND"
+  "Unison",
+  "Minor 2nd",
+  "Major 2nd",
+  "Minor 3rd",
+  "Major 3rd",
+  "Perfect 4th",
+  "Augmented 4th / Diminished 5th",
+  "Perfect 5th",
+  "Minor 6th",
+  "Major 6th",
+  "Minor 7th",
+  "Major 7th",
+  "Octave"
 ];
 
 export function getScaleNotes(note: string, step: number[]) {
@@ -22,7 +32,17 @@ export function getScaleNotes(note: string, step: number[]) {
 }
 
 export function getRandomInterval() {
-  Math.floor(Math.random() * 7);
+  let semitones = Math.floor(Math.random() * 13);
+  return {
+    semitones,
+    intervalName: INTERVALS[semitones],
+  };
+}
+
+export function getIntervalNote(root, semitones) {
+  let rootIdx = NOTES.indexOf(root);
+  let intervalIdx = (rootIdx + semitones) % NOTES.length;
+  return NOTES[intervalIdx];
 }
 
 // console.log(getScaleNotes("C", STEPS.Major));

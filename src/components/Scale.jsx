@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import * as notes from "../lib/notes.ts";
-import * as scales from "../lib/scale.ts";
+import * as notes from "../lib/notes";
+// import * as scales from "../lib/scales";
 
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -13,12 +13,12 @@ export function ScaleReference() {
   const [note, setNote] = useState("C");
   const [scaleType, setScaleType] = useState("Major");
 
-  const handleNoteChange = (event: SelectChangeEvent) => {
-    setNote(event.target.value as string);
+  const handleNoteChange = (event) => {
+    setNote(event.target.value);
   };
 
-  const handleScaleChange = (event: SelectChangeEvent) => {
-    setNote(event.target.value as string);
+  const handleScaleChange = (event) => {
+    setNote(event.target.value);
   };
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
-import * as notes from "../lib/notes.ts";
-import * as scales from "../lib/scales.ts"
-import { Quiz } from "./quiz.tsx"
+import * as notes from "../lib/notes";
+import * as scales from "../lib/scales"
+import { Quiz } from "./quiz"
 
 import {
   Stack,
@@ -41,9 +41,9 @@ function Layout({ question }) {
 
 
 // Helper functions
-function createAnswers(correctNote: string): string[] {
+function createAnswers(correctNote) {
   const correctIdx = Math.floor(Math.random() * 4);
-  let answers: string[] = [];
+  let answers = [];
   for (let i = 0; i < 4; i++) {
     if (i === correctIdx) {
       answers.push(correctNote);

@@ -1,6 +1,6 @@
 import React from "react";
-import * as notes from "../lib/notes.ts";
-import { Quiz } from "./quiz.tsx";
+import * as notes from "../lib/notes";
+import { Quiz } from "./quiz";
 
 import { Avatar, Stack, Typography, Box } from "@mui/material";
 
@@ -35,9 +35,9 @@ function Layout({ question }) {
 
 
 // Helper functions
-function createAnswers(correctNote: string): string[] {
+function createAnswers(correctNote) {
   const correctIdx = Math.floor(Math.random() * 4);
-  let answers: string[] = [];
+  let answers = [];
   for (let i = 0; i < 4; i++) {
     if (i === correctIdx) {
       answers.push(correctNote);

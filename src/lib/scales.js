@@ -1,4 +1,4 @@
-import { NOTES } from "./notes.ts";
+import { NOTES } from "./notes.js";
 
 export const STEPS = {
   Major: [2, 2, 1, 2, 2, 2, 1],
@@ -21,7 +21,7 @@ export const INTERVALS = [
   "Octave"
 ];
 
-export function getScaleNotes(note: string, step: number[]) {
+export function getScaleNotes(note, step) {
   let i = NOTES.indexOf(note);
   let notes = [note];
   for (let j = 0; j < step.length; j++) {

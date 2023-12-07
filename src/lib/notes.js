@@ -22,12 +22,12 @@ const STRINGS = {
   6: NOTES.indexOf("E"),
 };
 
-export function note(stringNumber: number, fretNumber: number): string {
+export function note(stringNumber, fretNumber) {
   let n = (STRINGS[stringNumber] + fretNumber) % 12;
   return NOTES[n];
 };
 
-export function randomNote(ignores: null | string[]): string {
+export function randomNote(ignores) {
   let notes = [...NOTES];
   if (ignores !== null) {
     ignores.forEach((e) => {
@@ -42,11 +42,11 @@ export function randomNote(ignores: null | string[]): string {
   return notes[r];
 };
 
-export function randomString(): number {
+export function randomString() {
   return Math.floor(Math.random() * 6) + 1;
 };
 
-export function randomFret(maxFrets: number): number {
+export function randomFret(maxFrets) {
   return Math.floor(Math.random() * maxFrets);
 };
 

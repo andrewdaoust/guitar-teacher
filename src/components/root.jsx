@@ -70,8 +70,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export function Root() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  // const [selected, setSelected] = React.useState("Fretboard");
-  // const [activeQuiz, setActiveQuiz] = React.useState(FretboardQuiz);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,22 +125,13 @@ export function Root() {
           {["fretboard", "interval"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
-                // onClick={() => {
-                //   if (text === "Fretboard") {
-                //     setActiveQuiz(FretboardQuiz);
-                //   } else if (text === "Interval") {
-                //     setActiveQuiz(IntervalQuiz);
-                //   }
-                //   // setSelected(text);
-                // }}
                 component={Link}
                 to={text}
               >
-                {/* <Link to={text} /> */}
                 <ListItemIcon>
                   <MusicNoteRoundedIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={text.charAt(0).toUpperCase() + text.slice(1)} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -150,9 +139,6 @@ export function Root() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        {/* <ButtonAppBar />
-        <FretboardQuiz /> */}
-        {/* {activeQuiz} */}
         <Outlet />
       </Main>
     </Box>

@@ -39,6 +39,21 @@ export function getRandomInterval() {
   };
 }
 
+export function getRandomSemitoneInterval(ignores) {
+  let semitones = [...INTERVALS.keys()];
+  if (ignores !== null) {
+    ignores.forEach((e) => {
+      let ignoreIdx = semitones.indexOf(e);
+      if (ignoreIdx > -1) {
+        semitones.splice(ignoreIdx, 1);
+      }
+    });
+  }
+
+  let r = Math.floor(Math.random() * semitones.length);
+  return semitones[r];
+};
+
 export function getIntervalNote(root, semitones) {
   let rootIdx = NOTES.indexOf(root);
   let intervalIdx = (rootIdx + semitones) % NOTES.length;

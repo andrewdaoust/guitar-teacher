@@ -67,6 +67,20 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+function quizFriendlyName(urlPath) {
+  let friendlyName = "";
+  let split = urlPath.split("-");
+  split.forEach((s) => {
+    let text = s.charAt(0).toUpperCase() + s.slice(1);
+    if (friendlyName === "") {
+      friendlyName = text;
+    } else {
+      friendlyName = friendlyName + " - " + text;
+    }
+  });
+  return friendlyName;
+}
+
 export function Root() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -122,7 +136,7 @@ export function Root() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["fretboard", "interval"].map((text, index) => (
+          {["fretboard", "interval-note", "interval-semitone"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
                 component={Link}
@@ -131,7 +145,7 @@ export function Root() {
                 <ListItemIcon>
                   <MusicNoteRoundedIcon />
                 </ListItemIcon>
-                <ListItemText primary={text.charAt(0).toUpperCase() + text.slice(1)} />
+                <ListItemText primary={quizFriendlyName(text)} />
               </ListItemButton>
             </ListItem>
           ))}

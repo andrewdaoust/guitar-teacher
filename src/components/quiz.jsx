@@ -73,17 +73,8 @@ function Question({ progress, question, Layout, onCorrect, onWrong }) {
         Question {progress.count}/{progress.max}
       </Typography>
       <Typography variant="h4">Score: {progress.score}</Typography>
-      {/* <Stack direction="row" spacing={1}>
-        <Typography variant="h5">STRING</Typography>
-        <Typography variant="h5">|</Typography>
-        <Typography variant="h5">FRET</Typography>
-      </Stack>
-      <Stack direction="row" spacing={2}>
-        <Avatar>{question.string}</Avatar>
-        <Avatar>{question.fret}</Avatar>
-      </Stack> */}
       <Layout question={question} />
-      <ButtonGroup size="large">
+      <ButtonGroup size="large" sx={{ my: 2 }}>
         <QuizButton
           option={question.options[0]}
           correct={question.correct}
@@ -109,7 +100,7 @@ function Question({ progress, question, Layout, onCorrect, onWrong }) {
           onWrong={onWrong}
         />
       </ButtonGroup>
-      {/* <p>Answer: {question.correct}</p> */}
+      <p>Answer: {question.correct}</p>
     </Box>
     // </div>
   );

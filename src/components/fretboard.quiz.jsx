@@ -2,7 +2,7 @@ import React from "react";
 import * as notes from "../lib/notes";
 import { Quiz } from "./quiz";
 
-import { Avatar, Stack, Typography, Box } from "@mui/material";
+import { Avatar, Stack, Typography, Box, Divider } from "@mui/material";
 
 const MAX_COUNT = 20;
 const MAX_FRETS = 12;
@@ -20,7 +20,17 @@ export function FretboardQuiz() {
 function Layout({ question }) {
   return (
     <Box>
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={2} divider={<Divider orientation="vertical" flexItem />}>
+        <Stack direction="column" spacing={1}>
+          <Typography variant="h5">STRING</Typography>
+          <Avatar>{question.string}</Avatar>
+        </Stack>
+        <Stack direction="column" spacing={1}>
+          <Typography variant="h5">FRET</Typography>
+          <Avatar>{question.fret}</Avatar>
+        </Stack>
+      </Stack>
+      {/* <Stack direction="row" spacing={1}>
         <Typography variant="h5">STRING</Typography>
         <Typography variant="h5">|</Typography>
         <Typography variant="h5">FRET</Typography>
@@ -28,7 +38,7 @@ function Layout({ question }) {
       <Stack direction="row" spacing={2}>
         <Avatar>{question.string}</Avatar>
         <Avatar>{question.fret}</Avatar>
-      </Stack>
+      </Stack> */}
     </Box>
   );
 }

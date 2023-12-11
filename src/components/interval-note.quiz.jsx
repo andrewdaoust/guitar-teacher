@@ -11,7 +11,7 @@ import {
 
 const MAX_COUNT = 20;
 
-export function IntervalQuiz() {
+export function IntervalNoteQuiz() {
   return (
     <Quiz
       maxQuestions={MAX_COUNT}

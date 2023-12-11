@@ -100,7 +100,7 @@ function Question({ progress, question, Layout, onCorrect, onWrong }) {
           onWrong={onWrong}
         />
       </ButtonGroup>
-      <p>Answer: {question.correct}</p>
+      {/* <p>Answer: {question.correct}</p> */}
     </Box>
     // </div>
   );

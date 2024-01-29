@@ -60,5 +60,10 @@ export function getIntervalNote(root, semitones) {
   return NOTES[intervalIdx];
 }
 
+export function getRandomStepPattern() {
+  let step = Math.floor(Math.random() * STEPS.length);
+  return STEPS[step];
+}
+
 // console.log(getScaleNotes("C", STEPS.Major));
 // console.log(getScaleNotes("A", STEPS.Minor));

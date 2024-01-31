@@ -4,6 +4,7 @@ import { FretboardQuiz } from "./components/fretboard.quiz";
 import { IntervalNoteQuiz } from "./components/interval-note.quiz";
 import { IntervalSemitoneQuiz } from "./components/interval-semitone.quiz";
 import { ScaleQuiz } from "./components/scale.quiz";
+import { getRandomScale } from "./lib/scales";
 // import { ScaleReference } from "./components/Scale";
 
 import { Root } from "./components/root";
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "scale",
-        element: <ScaleQuiz />,
+        element: <ScaleQuiz scale={getRandomScale()}/>,
       },
     ],
   },

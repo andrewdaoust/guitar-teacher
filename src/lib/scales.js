@@ -1,9 +1,15 @@
-import { NOTES } from "./notes.js";
+import { NOTES, randomNote } from "./notes.js";
 
-export const STEPS = {
-  Major: [2, 2, 1, 2, 2, 2, 1],
-  Minor: [2, 1, 2, 2, 1, 2, 2],
-};
+export const SCALE_PATTERNS = [
+  {
+    name: "Major",
+    steps: [2, 2, 1, 2, 2, 2, 1],
+  },
+  {
+    name: "Minor",
+    steps: [2, 1, 2, 2, 1, 2, 2],
+  }
+];
 
 export const INTERVALS = [
   "Unison",
@@ -60,9 +66,24 @@ export function getIntervalNote(root, semitones) {
   return NOTES[intervalIdx];
 }
 
-export function getRandomStepPattern() {
-  let step = Math.floor(Math.random() * STEPS.length);
-  return STEPS[step];
+export function getIntervalNames(steps) {
+  let i = 0;
+  let names = ["Root"]
+  steps.forEach(s => {
+    i += s
+    names.push(INTERVALS[i])
+  });
+
+  return names;
+}
+
+export function getRandomScale() {
+  let p = Math.floor(Math.random() * SCALE_PATTERNS.length);
+  let s = SCALE_PATTERNS[p];
+  s.root = randomNote([]);
+  s.notes = getScaleNotes(s.root, s.steps);
+  s.intervalNames = getIntervalNames(s.steps);
+  return s;
 }
 
 // console.log(getScaleNotes("C", STEPS.Major));

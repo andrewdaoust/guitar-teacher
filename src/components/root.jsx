@@ -136,7 +136,7 @@ export function Root() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["fretboard", "interval-note", "interval-semitone"].map((text, index) => (
+          {["fretboard", "interval-note", "interval-semitone", "scale"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
                 component={Link}

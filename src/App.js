@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { FretboardQuiz } from "./components/fretboard.quiz";
 import { IntervalNoteQuiz } from "./components/interval-note.quiz";
 import { IntervalSemitoneQuiz } from "./components/interval-semitone.quiz";
+import { ScaleQuiz } from "./components/scale.quiz";
 // import { ScaleReference } from "./components/Scale";
 
 import { Root } from "./components/root";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "interval-semitone",
         element: <IntervalSemitoneQuiz />,
+      },
+      {
+        path: "scale",
+        element: <ScaleQuiz />,
       },
     ],
   },

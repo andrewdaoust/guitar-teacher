@@ -4,72 +4,85 @@ import * as notes from "../lib/notes";
 // import * as scales from "../lib/scales";
 
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button"
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export function ScaleQuiz({ scale }) {
+  const [showResult, setShowResult] = useState(false);
   const [answers, setAnswers] = useState(Array(scale.notes.length).fill(scale.root));
 
-  // console.log(scale);
+  const triggerResult = () => {
+    setShowResult(!showResult);
+  }
 
-  return (
+
+
+  return showResult ? (
+    <ScaleQuizResult 
+      userAnswers={answers}
+      scale={scale}
+      newGame={triggerResult}
+    />
+  ) : (
     <Box sx={{ minWidth: 120 }}>
       <h1>{scale.root} {scale.name}</h1>
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={0}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={1}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={2}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={3}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={4}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={5}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={6}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
-      <ScaleNoteOption
+      <ScaleQuizOption
         i={7}
         scale={scale}
         answers={answers}
         setAnswers={setAnswers}
       />
+      <Button onClick={triggerResult}>Submit</Button>
     </Box>
   );
 }
 
-function ScaleNoteOption({ i, scale, answers, setAnswers }) {
+function ScaleQuizOption({ i, scale, answers, setAnswers }) {
   const onChange = (event) => {
     let newAnswers = [...answers];
     newAnswers[i] = event.target.value;
@@ -105,6 +118,28 @@ function ScaleNoteOption({ i, scale, answers, setAnswers }) {
   );
 }
 
+function ScaleQuizResult({ userAnswers, scale, newGame }) {
+  let res = [];
+  for (let i = 0; i < scale.intervalNames.length; i++) {
+    let name = scale.intervalNames[i];
+    let ua = userAnswers[i];
+    let ca = scale.notes[i];
+
+    res.push(
+      (
+        <p>{name} {ca} / {ua} - {(ca === ua ? "Correct" : "Incorrect")}</p>
+      )
+    );
+  }
+
+  return (
+    <Box sx={{ minWidth: 120 }}>
+      <h1>{scale.root} {scale.name}</h1>
+      {res}
+      <Button onClick={newGame}>New Game</Button>
+    </Box>
+  );
+}
 
 //////////////
 //

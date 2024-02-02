@@ -68,6 +68,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 function quizFriendlyName(urlPath) {
+  // Special case for CAGED
+  if (urlPath === "caged") {
+    return "CAGED";
+  }
+
   let friendlyName = "";
   let split = urlPath.split("-");
   split.forEach((s) => {
@@ -136,7 +141,7 @@ export function Root() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["fretboard", "interval-note", "interval-semitone", "scale"].map((text, index) => (
+          {["fretboard", "interval-note", "interval-semitone", "scale", "caged"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton
                 component={Link}

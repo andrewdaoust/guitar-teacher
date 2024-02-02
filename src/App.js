@@ -5,6 +5,7 @@ import { IntervalNoteQuiz } from "./components/interval-note.quiz";
 import { IntervalSemitoneQuiz } from "./components/interval-semitone.quiz";
 import { ScaleQuiz } from "./components/scale.quiz";
 import { getRandomScale } from "./lib/scales";
+import { CagedQuiz } from "./components/caged.quiz";
 // import { ScaleReference } from "./components/Scale";
 
 import { Root } from "./components/root";
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "scale",
-        element: <ScaleQuiz scale={getRandomScale()}/>,
+        element: <ScaleQuiz scale={getRandomScale()} />,
+      },
+      {
+        path: "caged",
+        element: <CagedQuiz />,
       },
     ],
   },

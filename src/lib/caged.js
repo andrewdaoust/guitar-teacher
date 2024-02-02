@@ -40,6 +40,8 @@ export function getChordFromForm(form, position) {
       rootString = 4;
       positionOffset = 0;
       break;
+    default:
+      throw Error(`Invalid form or position. ${form} - ${position}`);
   }
 
   return note(rootString, position + positionOffset);

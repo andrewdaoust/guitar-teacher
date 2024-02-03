@@ -20,6 +20,8 @@ import MusicNoteRoundedIcon from "@mui/icons-material/MusicNoteRounded";
 
 import { Outlet, Link } from "react-router-dom";
 
+import { Fretboard } from './fretboard';
+
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -141,12 +143,15 @@ export function Root() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["fretboard", "interval-note", "interval-semitone", "scale", "caged"].map((text, index) => (
+          {[
+            "fretboard",
+            "interval-note",
+            "interval-semitone",
+            "scale",
+            "caged",
+          ].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton
-                component={Link}
-                to={text}
-              >
+              <ListItemButton component={Link} to={text}>
                 <ListItemIcon>
                   <MusicNoteRoundedIcon />
                 </ListItemIcon>
@@ -159,6 +164,8 @@ export function Root() {
       <Main open={open}>
         <DrawerHeader />
         <Outlet />
+        <Divider />
+        <Fretboard />
       </Main>
     </Box>
   );

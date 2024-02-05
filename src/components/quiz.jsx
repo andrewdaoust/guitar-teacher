@@ -117,62 +117,27 @@ function QuizButton({ option, correct, onCorrect, onWrong }) {
   );
 }
 
-// function QuizStart() {
-//   const [stringState, setStringState] = React.useState({
-//     "1": true,
-//     "2": true,
-//     "3": true,
-//     "4": true,
-//     "5": true,
-//     "6": true,
+// function QuizResults({ results }) {
+//   let res = [];
+//   results.forEach((r) => {
+//     res.push(
+//       <p>{r.question} - {r.correct} - {r.answer} - {
+//         r.correct === r.answer ? "Correct" : "Wrong"
+//       }</p>
+//     )
 //   });
 
-//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setStringState({
-//       ...stringState,
-//       [event.target.name]: event.target.checked,
-//     });
-//   };
-
-//   return (
-//     <div>
-//       <FormGroup>
-//         <FormControlLabel
-//           control={<Checkbox defaultChecked onChange={handleChange} />}
-//           label="6"
-//         />
-//         <FormControlLabel
-//           control={<Checkbox defaultChecked onChange={handleChange} />}
-//           label="5"
-//         />
-//         <FormControlLabel
-//           control={<Checkbox defaultChecked onChange={handleChange} />}
-//           label="4"
-//         />
-//         <FormControlLabel
-//           control={<Checkbox defaultChecked onChange={handleChange} />}
-//           label="3"
-//         />
-//         <FormControlLabel
-//           control={<Checkbox defaultChecked onChange={handleChange} />}
-//           label="2"
-//         />
-//         <FormControlLabel
-//           control={<Checkbox defaultChecked onChange={handleChange} />}
-//           label="1"
-//         />
-//       </FormGroup>
-//     </div>
-//   );
+//   return res;
 // }
 
 function QuizOver({ score, maxScore, resetFn }) {
   return (
     <div>
+      {/* <QuizResults results={results} /> */}
       <p>
         Game over! Score: {score}/{maxScore}
       </p>
-      <button onClick={resetFn}>New Game</button>
+      <Button onClick={resetFn}>New Game</Button>
     </div>
   );
 }

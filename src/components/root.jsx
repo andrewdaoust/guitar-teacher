@@ -143,22 +143,23 @@ export function Root() {
         </DrawerHeader>
         <Divider />
         <List>
-          {[
-            "fretboard",
-            "interval-note",
-            "interval-semitone",
-            "scale",
-            "caged",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton component={Link} to={text}>
-                <ListItemIcon>
-                  <MusicNoteRoundedIcon />
-                </ListItemIcon>
-                <ListItemText primary={quizFriendlyName(text)} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <RouterList
+            arr={[
+              "fretboard",
+              "interval-note",
+              "interval-semitone",
+              "scale",
+              "caged",
+            ]}
+          />
+        </List>
+        <Divider />
+        <List>
+          <RouterList
+            arr={[
+              "scale-reference"
+            ]}
+          />
         </List>
       </Drawer>
       <Main open={open}>
@@ -169,4 +170,17 @@ export function Root() {
       </Main>
     </Box>
   );
+}
+
+function RouterList({ arr }) {
+  return arr.map((text, index) => (
+    <ListItem key={text} disablePadding>
+      <ListItemButton component={Link} to={text}>
+        <ListItemIcon>
+          <MusicNoteRoundedIcon />
+        </ListItemIcon>
+        <ListItemText primary={quizFriendlyName(text)} />
+      </ListItemButton>
+    </ListItem>
+  ));
 }

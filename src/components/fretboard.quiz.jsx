@@ -30,15 +30,6 @@ function Layout({ question }) {
           <Avatar>{question.fret}</Avatar>
         </Stack>
       </Stack>
-      {/* <Stack direction="row" spacing={1}>
-        <Typography variant="h5">STRING</Typography>
-        <Typography variant="h5">|</Typography>
-        <Typography variant="h5">FRET</Typography>
-      </Stack>
-      <Stack direction="row" spacing={2}>
-        <Avatar>{question.string}</Avatar>
-        <Avatar>{question.fret}</Avatar>
-      </Stack> */}
     </Box>
   );
 }
@@ -56,8 +47,6 @@ function createAnswers(correctNote) {
       answers.push(r);
     }
   }
-
-  // console.log(answers);
   return answers;
 }
 

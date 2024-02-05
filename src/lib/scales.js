@@ -86,5 +86,16 @@ export function getRandomScale() {
   return s;
 }
 
+export function getScale(root, pattern) {
+  let flattened = SCALE_PATTERNS.flatMap((e) => e.name);
+  let i = flattened.indexOf(pattern);
+  let s = SCALE_PATTERNS[i];
+  s.root = root;
+  s.notes = getScaleNotes(root, s.steps);
+  s.intervalNames = getIntervalNames(s.steps);
+  console.log(s)
+  return s;
+}
+
 // console.log(getScaleNotes("C", STEPS.Major));
 // console.log(getScaleNotes("A", STEPS.Minor));

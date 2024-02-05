@@ -57,7 +57,6 @@ function createAnswers(correctNote) {
     }
   }
 
-  // console.log(answers);
   return answers;
 }
 

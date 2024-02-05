@@ -21,7 +21,6 @@ export function IntervalNoteQuiz() {
   );
 }
 
-
 function Layout({ question }) {
   return (
     <Box>
@@ -38,7 +37,6 @@ function Layout({ question }) {
     </Box>
   );
 }
-
 
 // Helper functions
 function createAnswers(correctNote) {

@@ -1,13 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import * as notes from "../lib/notes";
-// import * as scales from "../lib/scales";
+import * as scales from "../lib/scales";
 
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
+import Divider from "@mui/material/Divider"
 
 export function ScaleReference() {
   const [note, setNote] = useState("C");
@@ -18,7 +19,7 @@ export function ScaleReference() {
   };
 
   const handleScaleChange = (event) => {
-    setNote(event.target.value);
+    setScaleType(event.target.value);
   };
 
   return (
@@ -60,6 +61,20 @@ export function ScaleReference() {
           <MenuItem value={"Minor"}>Minor</MenuItem>
         </Select>
       </FormControl>
+      <Divider />
+      <ScaleInfo rootNote={note} scaleType={scaleType} />
     </Box>
   );
+}
+
+function ScaleInfo({ rootNote, scaleType }) {
+  const s = scales.getScale(rootNote, scaleType);
+  let res = [];
+  for (let i = 0; i < s.intervalNames.length; i++) {
+    let name = s.intervalNames[i];
+    let note = s.notes[i];
+
+    res.push((<p>{name}: {note}</p>));
+  }
+  return res;
 }

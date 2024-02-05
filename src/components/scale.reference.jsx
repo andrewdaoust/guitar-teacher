@@ -73,8 +73,14 @@ function ScaleInfo({ rootNote, scaleType }) {
   for (let i = 0; i < s.intervalNames.length; i++) {
     let name = s.intervalNames[i];
     let note = s.notes[i];
+    let steps;
+    if (i === 0) {
+      steps = "";
+    } else {
+      steps = s.steps[i-1] === 2 ? " - Whole step" : " - Half step";
+    }
 
-    res.push((<p>{name}: {note}</p>));
+    res.push((<p>{name}: {note}{steps}</p>));
   }
   return res;
 }

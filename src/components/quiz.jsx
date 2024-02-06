@@ -51,7 +51,7 @@ export function Quiz({ maxQuestions, questionLayout, questionDataFunc }) {
       resetFn={resetGame} 
     />
   ) : (
-    <div>
+    <Box>
       {/* <QuizStart /> */}
       <Question
         progress={progress}
@@ -60,14 +60,13 @@ export function Quiz({ maxQuestions, questionLayout, questionDataFunc }) {
         onCorrect={correctAnswer}
         onWrong={wrongAnswer}
       />
-    </div>
+    </Box>
   );
 }
 
 // Supporting components
 function Question({ progress, question, Layout, onCorrect, onWrong }) {
   return (
-    // <div className="quiz-game">
     <Box justifyContent="center">
       <Typography variant="h4">
         Question {progress.count}/{progress.max}
@@ -100,9 +99,7 @@ function Question({ progress, question, Layout, onCorrect, onWrong }) {
           onWrong={onWrong}
         />
       </ButtonGroup>
-      {/* <p>Answer: {question.correct}</p> */}
     </Box>
-    // </div>
   );
 }
 

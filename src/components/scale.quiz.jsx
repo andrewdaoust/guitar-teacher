@@ -18,8 +18,6 @@ export function ScaleQuiz({ scale }) {
     setShowResult(!showResult);
   }
 
-
-
   return showResult ? (
     <ScaleQuizResult 
       userAnswers={answers}
@@ -140,32 +138,3 @@ function ScaleQuizResult({ userAnswers, scale, newGame }) {
     </Box>
   );
 }
-
-//////////////
-//
-// C Major
-//
-// C
-//
-// Select v
-//   A
-//   A#
-//   B
-//   ...
-//   G
-//   G#
-//
-// Select ^
-//
-// Select ^
-//
-// Select ^
-//
-// Select ^
-//
-// Select ^
-//
-// C
-//
-//
-// Submit

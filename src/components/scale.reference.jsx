@@ -73,14 +73,20 @@ function ScaleInfo({ rootNote, scaleType }) {
   for (let i = 0; i < s.intervalNames.length; i++) {
     let name = s.intervalNames[i];
     let note = s.notes[i];
-    let steps;
-    if (i === 0) {
-      steps = "";
-    } else {
-      steps = s.steps[i-1] === 2 ? " - Whole step" : " - Half step";
-    }
-
-    res.push((<p>{name}: {note}{steps}</p>));
+    res.push(
+      <p>
+        {name}: {note}
+      </p>
+    );
   }
+
+  res.push(<br />)
+
+  let pattern = "";
+  s.steps.forEach((st) => {
+    pattern += st === 2 ? "Whole, " : "Half, ";
+  });
+  pattern = pattern.substring(0, pattern.length - 2); // Slice last space and comma off end
+  res.push(<p>Scale pattern: {pattern}</p>)
   return res;
 }

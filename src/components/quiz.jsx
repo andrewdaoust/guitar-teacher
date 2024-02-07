@@ -1,12 +1,18 @@
 import React from "react";
 import { useState } from "react";
-
 import {
   Button,
   ButtonGroup,
   Typography,
   Box,
 } from "@mui/material";
+import { create } from "zustand";
+
+const useResultStore = create((set) => ({
+  results: [],
+  addResult: (res) => set((state) => ({ results: [...state.results, res] })),
+  resetResults: () => set({ results: [] }),
+}));
 
 
 export function Quiz({ maxQuestions, questionLayout, questionDataFunc }) {
@@ -16,6 +22,7 @@ export function Quiz({ maxQuestions, questionLayout, questionDataFunc }) {
     score: 0,
     max: maxQuestions,
   });
+  const resetResults = useResultStore((state) => state.resetResults);
 
   const wrongAnswer = () => {
     setProgress({
@@ -42,6 +49,7 @@ export function Quiz({ maxQuestions, questionLayout, questionDataFunc }) {
       max: maxQuestions,
     });
     setQuestion(questionDataFunc());
+    resetResults();
   };
 
   return progress.count > progress.max ? (
@@ -104,33 +112,43 @@ function Question({ progress, question, Layout, onCorrect, onWrong }) {
 }
 
 function QuizButton({ option, correct, onCorrect, onWrong }) {
+  const addResult = useResultStore((state) => state.addResult);
+  const onClick = () => {
+    if (option === correct) {
+      onCorrect();
+    } else {
+      onWrong();
+    }
+    addResult({ userAnswer: option, correctAnswer: correct })
+  }
   return (
     <Button
       // className="note-button"
-      onClick={option === correct ? onCorrect : onWrong}
+      onClick={onClick}
     >
       {option}
     </Button>
   );
 }
 
-// function QuizResults({ results }) {
-//   let res = [];
-//   results.forEach((r) => {
-//     res.push(
-//       <p>{r.question} - {r.correct} - {r.answer} - {
-//         r.correct === r.answer ? "Correct" : "Wrong"
-//       }</p>
-//     )
-//   });
+function QuizResults() {
+  const results = useResultStore((state) => state.results);
+  let res = [];
+  results.forEach((r) => {
+    res.push(
+      <p>
+        {r.userAnswer} - {r.correctAnswer} - {r.userAnswer === r.correctAnswer ? "Correct" : "Wrong"}
+      </p>
+    );
+  });
 
-//   return res;
-// }
+  return res;
+}
 
 function QuizOver({ score, maxScore, resetFn }) {
   return (
     <div>
-      {/* <QuizResults results={results} /> */}
+      <QuizResults />
       <p>
         Game over! Score: {score}/{maxScore}
       </p>

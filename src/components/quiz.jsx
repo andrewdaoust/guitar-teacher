@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   ButtonGroup,
@@ -16,13 +16,17 @@ const useResultStore = create((set) => ({
 
 
 export function Quiz({ maxQuestions, questionLayout, questionDataFunc }) {
+  const resetResults = useResultStore((state) => state.resetResults);
+  useEffect(() => {
+    resetResults();
+  }, [resetResults]);
+
   let [question, setQuestion] = useState(questionDataFunc());
   let [progress, setProgress] = useState({
     count: 1,
     score: 0,
     max: maxQuestions,
   });
-  const resetResults = useResultStore((state) => state.resetResults);
 
   const wrongAnswer = () => {
     setProgress({

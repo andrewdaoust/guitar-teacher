@@ -17,6 +17,10 @@ const router = createBrowserRouter([
     errorElement: <Root />,
     children: [
       {
+        index: true,
+        element: <CagedQuiz />,
+      },
+      {
         path: "fretboard",
         element: <FretboardQuiz />,
       },

@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "git checkout prod && git merge main"
+    "deploy": "git checkout prod && git merge main && git push && git checkout main"
   },
   "eslintConfig": {
     "extends": [
